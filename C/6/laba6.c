@@ -1,34 +1,10 @@
 #include <stdio.h>
-#include <string.h>		// strlen(),  strchr()
-#include <stdlib.h>		// atoi(),  exit(0),  system("cls")
-#include <ctype.h>		// isdigit()
+#include <string.h>		// strchr()
+#include <stdlib.h>		// exit(0),  system("cls")
 #include <conio.h>		// getch()
 #include <time.h>		// rand()
 #define SIZE 3
-
-
-int valid_int() {
-	char str[65];
-	int num;
-
-	while (1) {
-		int smb = 0;
-
-		scanf("%s", str);  //input of value
-		int len = strlen(str);
-
-		for (int i=0; i<len; ++i) {
-			if (isdigit(str[i]) == 0) {
-				++smb;
-				break;
-			}
-		}
-		if (smb == 0) break;
-		else printf("need natural number!: ");
-	}
-	num = atoi(str);   //convert str to int
-	return num;
-}
+#include "../validation.h"
 
 
 int **init_fill(char choice) {
@@ -42,13 +18,13 @@ int **init_fill(char choice) {
 		for (int i = 0; i < SIZE; ++i) {
 			for (int j = 0; j < SIZE; ++j) {
 				printf("matrix[%d][%d] = ", i+1, j+1);
-				matrix[i][j] = valid_int();
+				matrix[i][j] = get_natur();
 			}
 		}
 	}
 	else if (choice == 'r') {
 		printf("Enter max range: ");
-		int max_ran = valid_int();
+		int max_ran = get_natur();
 		for (int i = 0; i < SIZE; ++i) {
 			for (int j = 0; j < SIZE; ++j) {
 				matrix[i][j] = rand()%max_ran;

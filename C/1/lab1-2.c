@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <string.h>		// strlen(),  strchr()
-#include <ctype.h>		// isxdigit(),  isdigit()
-#include <stdlib.h>		// atoi(),  strtol(),  exit(0)
+#include <string.h>		// strchr()
+#include <stdlib.h>		// strtol(),  exit(0)
 #include <conio.h>		// system("cls"),  getch()
 #include "../validation.h"
 

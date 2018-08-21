@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <string.h>		// strlen(),  strchr()
-#include <stdlib.h>		// atoi(),  srand,rand(),  exit(0)
-#include <ctype.h>		// isdigit()
+#include <string.h>		// strchr()
+#include <stdlib.h>		// srand,rand(),  exit(0)
 #include <time.h>		// time()
 #include <conio.h>		// system("cls"),  getch()
 #include "../validation.h"
