@@ -4,39 +4,7 @@
 #include <ctype.h>		// isdigit()
 #include <time.h>		// time()
 #include <conio.h>		// system("cls"),  getch()
-
-
-int valid_int(int arg) {
-	char str[65];
-	int num;
-
-	while (1) {
-		int smb = 0;
-
-		scanf("%s", str);  //input of value
-		int len = strlen(str);
-
-		for (int i=0; i<len; ++i) {
-			if (isdigit(str[i]) == 0) {
-				++smb;
-				break;
-			}
-		}
-		if (arg == 1) {
-			if (smb == 0) break;
-			else printf("Need natural number!: ");
-		}
-		else {
-			if ((smb == 0) || ((smb == 1) && (str[0] == '-'))) {
-				break;
-			}
-			else printf("Need natural number!: ");
-		}
-		
-	}
-	num = atoi(str);   //convert str to int
-	return num;
-}
+#include "../validation.h"
 
 
 int main() {
@@ -59,12 +27,12 @@ int main() {
 	switch (choice) {
 		case '1': {
 			printf("\nEnter number of elements: ");
-			*size = valid_int(1);
+			*size = get_natur();
 
-			// FILING in ARRAY
+			// FILLING in ARRAY
 			for (int i = 0; i < *size; ++i) {
 				printf("array[%d] = ", i);
-				array[i] = valid_int(0);
+				array[i] = get_int();
 			}
 			pnt = 1;
 			break;
@@ -78,9 +46,9 @@ int main() {
    			srand((unsigned) time(&t));
 
 			printf("\nEnter max range: ");
-			int max_ran = valid_int(1);
+			int max_ran = get_natur();
 
-			// FILING in ARRAY
+			// FILLING in ARRAY
 			for (int i = 0; i < *size; ++i) {
 				array[i] = -max_ran/2 + rand() %(max_ran+1);
 				printf("array[%d] = %d\n", i, array[i]);

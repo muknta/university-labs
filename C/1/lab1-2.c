@@ -3,56 +3,8 @@
 #include <ctype.h>		// isxdigit(),  isdigit()
 #include <stdlib.h>		// atoi(),  strtol(),  exit(0)
 #include <conio.h>		// system("cls"),  getch()
+#include "../validation.h"
 
-int valid_int() {
-	char str[65];
-	int num;
-
-	while (1) {
-		int j = 0;
-
-		scanf("%s", str);  //input of value
-		int len = strlen(str);
-
-		for (int i=0; i<len; ++i) {
-			if (isdigit(str[i]) == 0) {
-				++j;
-				break;
-			}
-		}
-		if (j == 0) break;
-		else printf("Need natural number!: ");
-	}
-	num = atoi(str);   //convert str to int
-	return num;
-}
-
-int valid_hex() {
-	char str[65];
-	int num;
-
-	while (1) {
-		int j = 0;
-		scanf("%s", str);  //input of value
-		int len = strlen(str);
-
-		for (int i=0; i<len; ++i) {
-			if (isxdigit(str[i]) == 0) {
-				++j;
-				break;
-			}
-			else if ((isalpha(str[i]) != 0) && (strlen(str) > 4)) {
-				printf("\nlength of hex digit no more than 4\n");
-				++j;
-				break;
-			}
-		}
-		if (j == 0) break;
-		else printf("Need hex digit!: ");
-	}
-	num = (int)strtol(str, NULL, 16);   //convert str(hex) to int
-	return num;
-}
 
 int main() {
 	char t; /*тип пакета*/
@@ -75,7 +27,7 @@ int main() {
 		case '1': {
 			printf("\nEnter package type (0-7): ");
 			while (1) {
-				int n = valid_int();
+				int n = get_natur();
 				
 				if ((0 <= n) && (n <= 7)) {
 					t = (char) n;		// Assignment int to char (Присвоєння)
@@ -85,7 +37,7 @@ int main() {
 			}
 			printf("Enter Source ID (0-15): ");
 			while (1) {
-				int n = valid_int();
+				int n = get_int();
 				
 				if ((0 <= n) && (n <= 15)) {
 					s = (char) n;
@@ -95,7 +47,7 @@ int main() {
 			}
 			printf("Enter package length (0-255): ");
 			while (1) {
-				int n = valid_int();
+				int n = get_natur();
 
 				if ((0 <= n) && (n <= 255)) {
 					l = (unsigned char) n;
@@ -117,7 +69,7 @@ int main() {
 			printf("\nEnter Program Status Word\n");
 			printf("(hex digit from 0 to 0xFFFF): ");
 
-			int numb = valid_hex();
+			int numb = get_hex();
 			sprintf (ch, "%x", numb);  //convert int(dex) to str(hex)
 			UnitStateWord = (unsigned int)strtol(ch, NULL, 16);  //str(hex) to int(hex)
 			/*виділення складових частин*/

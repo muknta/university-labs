@@ -4,37 +4,8 @@
 #include <stdlib.h>		// atof(),  exit(0)
 #include <conio.h>		// system("cls"),  getch()
 #include <math.h>
+#include "../validation.h"
 
-float valid_float() {
-	char str[65];
-	float num;
-
-	while (1) {
-		int smb = 0, dot = 0;
-
-		scanf("%s", str);  //input of value
-		int len = strlen(str);
-
-		for (int i=0; i<len; ++i) {
-			if (isdigit(str[i]) == 0) {
-				if (str[i] == '.') {
-					++dot;
-				}
-				else {
-					++smb;
-					break;
-				}
-			}
-		}
-		if ((dot < 2) && ((smb == 0) ||
-			((smb == 1) && (str[0] == '-') && str[1]))) {
-			break;
-		}
-		else printf("Need float number!: ");
-	}
-	num = atof(str);   //convert str to float
-	return num;
-}
 
 int main() {
 	printf("\nSadchenko Nikita, student of KM-73.\n### Laboratory Work 1 ###\n");
@@ -55,19 +26,19 @@ int main() {
 
 			printf("\nEnter R: ");
 			do {
-				R = valid_float();
+				R = get_float();
 			} while (R <= 0);
 			printf("Enter r: ");
 			do {
-				r = valid_float();
+				r = get_float();
 			} while (r <= 0);
 			printf("Enter L: ");
 			do {
-				L = valid_float();
+				L = get_float();
 			} while (L <= 0);
 			printf("Enter h: ");
 			do {
-				h = valid_float();
+				h = get_float();
 			} while (h <= 0);
 
 			s = M_PI*(R*R + (R + r)*L + r*r);
@@ -81,17 +52,17 @@ int main() {
 			float ab, bc, ac, p, s;
 
 			printf("\nEnter x-coordinate of A: ");
-			x1 = valid_float();
+			x1 = get_float();
 			printf("Enter y-coordinate of A: ");
-			y1 = valid_float();
+			y1 = get_float();
 			printf("Enter x-coordinate of B: ");
-			x2 = valid_float();
+			x2 = get_float();
 			printf("Enter y-coordinate of B: ");
-			y2 = valid_float();
+			y2 = get_float();
 			printf("Enter x-coordinate of C: ");
-			x3 = valid_float();
+			x3 = get_float();
 			printf("Enter y-coordinate of C: ");
-			y3 = valid_float();
+			y3 = get_float();
 
 			ab = sqrt(pow((x1-x2),2) + pow((y1-y2),2));
 			bc = sqrt(pow((x2-x3),2) + pow((y2-y3),2));
